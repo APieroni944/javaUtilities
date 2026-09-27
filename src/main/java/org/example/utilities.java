@@ -33,7 +33,7 @@ public class utilities {
             System.out.println(prompt);
             return Double.parseDouble(scanner.nextLine());
         } catch (Exception e) {
-            System.out.println("An error occurred " + e + ". Please ensure you enter a valid integer");
+            System.out.println("An error occurred " + e + ". Please ensure you enter a valid number");
             return inputDouble(prompt);
         }
     }
@@ -48,7 +48,7 @@ public class utilities {
                 throw new IllegalArgumentException("Input out of bounds");
             }
         } catch (Exception e) {
-            System.out.println("An error occurred " + e + ". Please ensure you enter a valid integer");
+            System.out.println("An error occurred " + e + ". Please ensure you enter a valid number");
             return inputDouble(prompt, maxBound, minBound);
         }
     } public static float inputFloat(String prompt) {
@@ -57,7 +57,7 @@ public class utilities {
             System.out.println(prompt);
             return Float.parseFloat(scanner.nextLine());
         } catch (Exception e) {
-            System.out.println("An error occurred " + e + ". Please ensure you enter a valid integer");
+            System.out.println("An error occurred " + e + ". Please ensure you enter a valid number");
             return inputFloat(prompt);
         }
     }
@@ -72,8 +72,26 @@ public class utilities {
                 throw new IllegalArgumentException("Input out of bounds");
             }
         } catch (Exception e) {
-            System.out.println("An error occurred " + e + ". Please ensure you enter a valid integer");
+            System.out.println("An error occurred " + e + ". Please ensure you enter a valid number");
             return inputFloat(prompt, maxBound, minBound);
+        }
+    }
+    public boolean inputBoolean(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(prompt);
+        switch (scanner.nextLine()
+                .strip()
+                .toLowerCase()) {
+            case "y": {
+                return true;
+            }
+            case "n": {
+                return false;
+            }
+            default:{
+                System.out.println("Invalid option entered. Please ensure you enter either 'y' or 'n'");
+                return inputBoolean(prompt);
+            }
         }
     }
     public static int testable() {
